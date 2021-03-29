@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  {% for n in lista %}
+  <tr>
+    <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+    <td>{{n}}</td>
+    <td><i>{{n}}</i></td>
+  </tr>
+  {% endfor %}
+{% endblock %}
