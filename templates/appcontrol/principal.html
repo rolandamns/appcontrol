@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+
+
+{% block body %}
+{% load socialaccount %}
+{% if user.is_authenticated %}
+
+<div class="container">
+        <div class="card text-center">
+            <div class="card-header">
+              
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><h4><span>Bienvenido, <strong>{{user.username}} {{user.email}}</strong></span><br></h5>
+                <br>
+
+                
+                <form method='POST' action="/home/">
+                  {% csrf_token %}
+                  <input type="hidden" name="correo" id="correo" value="{{ user.email }}">
+                  <input class="btn btn-primary btn-sm" type="submit" value="Add comment">
+                </form>
+
+                 
+               
+              
+            </div>
+            <div class="card-footer text-muted">
+              
+            </div>
+          </div>
+    
+    </div>|
+
+{% else %}
+
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Bienvenido, para ingresar debe iniciar sesión con su correo institucional</h5>
+          <a href="{% provider_login_url 'google' %}" class="btn btn-lg btn-danger btn-block">Iniciar sesión</a>
+          
+        </div>
+        <div class="card-footer text-muted">
+          
+        </div>
+      </div>
+
+</div>
+  
+    
+
+{% endif %}
+
+  
+
+
+{% endblock %}
+
